@@ -6,4 +6,4 @@ My solutions in Rust for Advent of Code puzzles
 
 ☆ - only the first part is solved
 
-- 2021 -
+- 2021 - ☆
