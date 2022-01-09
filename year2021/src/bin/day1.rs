@@ -15,14 +15,29 @@ fn part_a(input: &str) -> i64 {
     count_increases
 }
 
+fn part_b(input: &str) -> i64 {
+    let measurements = parse_measurements(input);
+    let mut count_increases = 0;
+
+    for i in 3..measurements.len() {
+        if measurements[i] > measurements[i - 3] {
+            count_increases += 1;
+        }
+    }
+
+    count_increases
+}
+
 fn main() {
     println!("part a: {:?}", part_a(include_str!("day1_input.txt")));
+    println!("part b: {:?}", part_b(include_str!("day1_input.txt")));
 }
 
 #[cfg(test)]
 mod tests {
     use super::parse_measurements;
     use super::part_a;
+    use super::part_b;
 
     #[test]
     fn test_parse_measurements() {
@@ -34,6 +49,14 @@ mod tests {
         assert_eq!(
             part_a("199\n200\n208\n210\n200\n207\n240\n269\n260\n263"),
             7
+        );
+    }
+
+    #[test]
+    fn test_part_b() {
+        assert_eq!(
+            part_b("199\n200\n208\n210\n200\n207\n240\n269\n260\n263"),
+            5
         );
     }
 }
